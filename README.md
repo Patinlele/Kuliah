@@ -1,2 +1,2 @@
 # Kuliah
-Something I made in college
+Something I learned maybe?
