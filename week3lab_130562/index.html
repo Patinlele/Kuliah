@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Buku</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      transition: background-color .3s, color .3s;
+      background: url('background.jpg') center/cover no-repeat fixed;
+      color: #333;
+    }
+    body.dark {
+      background-color: rgba(34,34,34,0.95);
+      background-blend-mode: multiply;
+      color: #f5f5f5;
+    }
+
+    .toggle-btn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      transition: transform .15s, background .2s;
+    }
+    .toggle-btn:hover { transform: scale(1.03); }
+    body.dark .toggle-btn { background: #444; color: #fff; }
+
+    form {
+      margin: 20px auto;
+      background: rgba(255,255,255,0.8);
+      padding: 15px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    form input, form button {
+      margin: 6px;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    body.dark form {
+      background: rgba(0,0,0,0.6);
+    }
+    body.dark form input {
+      background: #333;
+      color: #eee;
+      border-color: #555;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-top: 20px;
+      width: 100%;
+      background: rgba(188, 188, 188, 0.9);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    table, th, td { border: 1px solid #999; }
+    th, td { padding: 8px 12px; text-align: left; }
+    body.dark table { background: rgba(0,0,0,0.6); }
+    body.dark table, body.dark th, body.dark td { border-color: #555; }
+    tr:hover { background: rgba(0,0,0,0.05); transition: background .2s; }
+    body.dark tr:hover { background: rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+<button id="toggleBtn" class="toggle-btn">Mode Terang</button>
+
+<h1>Daftar Buku</h1>
+
+<form action="/create" method="POST">
+  <input type="text" name="judul" placeholder="Judul Buku" required>
+  <input type="number" name="tahunRilis" placeholder="Tahun Rilis" required>
+  <input type="text" name="penulis" placeholder="Penulis" required>
+  <input type="text" name="penerbit" placeholder="Penerbit" required>
+  <input type="text" name="genre" placeholder="Genre" required>
+  <button type="submit">Tambah Buku</button>
+</form>
+
+<!--TABEL-->
+
+<script>
+  const btn = document.getElementById('toggleBtn');
+  function updateButtonText() {
+    btn.textContent = document.body.classList.contains('dark') ? 'Mode Gelap' : 'Mode Terang';
+  }
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    updateButtonText();
+  });
+  updateButtonText();
+</script>
+</body>
+</html>
